@@ -1,0 +1,253 @@
+{
+  "project": "설비 이상감지 대시보드 MVP (Supabase + Vercel)",
+  "source_doc": "설계.md",
+  "statuses": {
+    "todo": "할 일",
+    "in_progress": "작업중",
+    "review": "리뷰 필요",
+    "needs_decision": "사람의 판단 필요",
+    "blocked": "대기",
+    "done": "완료",
+    "cancelled": "취소"
+  },
+  "unit_minutes": 30,
+  "updated_at": "2026-09-17",
+  "tasks": [
+    {
+      "id": "T01",
+      "title": "Supabase 프로젝트 생성 및 접속키 발급",
+      "description": "Supabase 계정/프로젝트 생성 후 Project URL, anon/service key 확보.",
+      "status": "todo",
+      "doc": "tasks/T01.md",
+      "category": "setup",
+      "priority": "high",
+      "estimated_minutes": 30,
+      "depends_on": [],
+      "updated_at": "2026-09-17"
+    },
+    {
+      "id": "T02",
+      "title": "alarm_logs 테이블 생성 및 Mock 데이터 삽입",
+      "description": "설계.md의 CREATE TABLE / INSERT 쿼리를 Supabase SQL Editor에서 실행.",
+      "status": "todo",
+      "doc": "tasks/T02.md",
+      "category": "db",
+      "priority": "high",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T01"
+      ]
+    },
+    {
+      "id": "T03",
+      "title": "Python 프로젝트 환경 셋업",
+      "description": "venv 생성, requirements.txt 초안(streamlit, supabase, plotly, python-dotenv, requests), .env 템플릿 작성.",
+      "status": "todo",
+      "doc": "tasks/T03.md",
+      "category": "setup",
+      "priority": "high",
+      "estimated_minutes": 30,
+      "depends_on": []
+    },
+    {
+      "id": "T04",
+      "title": "Supabase 연동 모듈 작성 (db.py)",
+      "description": "supabase-py 클라이언트 초기화 및 alarm_logs 조회 함수 구현.",
+      "status": "todo",
+      "doc": "tasks/T04.md",
+      "category": "backend",
+      "priority": "high",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T02",
+        "T03"
+      ]
+    },
+    {
+      "id": "T05",
+      "title": "DB 연결 실패 Fallback 처리 (Mock CSV)",
+      "description": "Supabase 조회 실패 시 로컬 mock_alarm_logs.csv를 읽어오는 예외처리 구현.",
+      "status": "todo",
+      "doc": "tasks/T05.md",
+      "category": "backend",
+      "priority": "medium",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T04"
+      ]
+    },
+    {
+      "id": "T06",
+      "title": "discord_notifier.py 기본 골격 및 Webhook 연결",
+      "description": "Discord Webhook URL 환경변수화, 기본 메시지 전송 함수 작성.",
+      "status": "todo",
+      "doc": "tasks/T06.md",
+      "category": "backend",
+      "priority": "medium",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T03"
+      ]
+    },
+    {
+      "id": "T07",
+      "title": "Discord Embed 카드 메시지 포맷 구성",
+      "description": "최신 알람 정보를 Embed 카드로 구성하고 Vercel 배포 URL 링크 포함.",
+      "status": "todo",
+      "doc": "tasks/T07.md",
+      "category": "backend",
+      "priority": "medium",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T04",
+        "T06"
+      ]
+    },
+    {
+      "id": "T08",
+      "title": "app.py 대시보드 기본 레이아웃 구성",
+      "description": "Streamlit 페이지 구조(사이드바/메인 영역) 및 데이터 로딩 연결.",
+      "status": "todo",
+      "doc": "tasks/T08.md",
+      "category": "frontend",
+      "priority": "high",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T04",
+        "T05"
+      ]
+    },
+    {
+      "id": "T09",
+      "title": "상단 메트릭 - 오늘 발생 이상 건수",
+      "description": "created_at 기준 당일 알람 건수 집계 후 st.metric으로 표시.",
+      "status": "todo",
+      "doc": "tasks/T09.md",
+      "category": "frontend",
+      "priority": "medium",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T08"
+      ]
+    },
+    {
+      "id": "T10",
+      "title": "이상 발생 리스트 테이블 시각화",
+      "description": "alarm_logs 데이터를 표(dataframe)로 표시, 행 선택 가능하도록 구성.",
+      "status": "todo",
+      "doc": "tasks/T10.md",
+      "category": "frontend",
+      "priority": "medium",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T08"
+      ]
+    },
+    {
+      "id": "T11",
+      "title": "파라미터 선택 UI 구현",
+      "description": "선택한 알람 행/파라미터에 따라 조회 대상 파라미터를 선택하는 UI 구현.",
+      "status": "todo",
+      "doc": "tasks/T11.md",
+      "category": "frontend",
+      "priority": "medium",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T10"
+      ]
+    },
+    {
+      "id": "T12",
+      "title": "시계열 Plotly 차트 구현 (임계치 라인 포함)",
+      "description": "선택 파라미터의 시계열 값을 Plotly로 그리고 threshold_value 수평선 추가.",
+      "status": "todo",
+      "doc": "tasks/T12.md",
+      "category": "frontend",
+      "priority": "high",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T11"
+      ]
+    },
+    {
+      "id": "T13",
+      "title": "AI 진단 카드 UI 구현",
+      "description": "차트 하단에 ai_opinion 필드를 카드 형태(st.info/custom container)로 출력.",
+      "status": "todo",
+      "doc": "tasks/T13.md",
+      "category": "frontend",
+      "priority": "medium",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T12"
+      ]
+    },
+    {
+      "id": "T14",
+      "title": "vercel.json 및 requirements.txt 최종 구성",
+      "description": "Vercel Python 런타임 배포용 vercel.json 작성 및 requirements.txt 확정.",
+      "status": "todo",
+      "doc": "tasks/T14.md",
+      "category": "deploy",
+      "priority": "high",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T08",
+        "T06"
+      ]
+    },
+    {
+      "id": "T15",
+      "title": "환경변수 설정 (.env / Vercel Environment Variables)",
+      "description": "SUPABASE_URL, SUPABASE_KEY, DISCORD_WEBHOOK_URL 등 로컬/Vercel 환경변수 정리.",
+      "status": "todo",
+      "doc": "tasks/T15.md",
+      "category": "deploy",
+      "priority": "high",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T14"
+      ]
+    },
+    {
+      "id": "T16",
+      "title": "Vercel 배포 및 동작 확인",
+      "description": "Vercel에 프로젝트 연결 후 배포, 배포 URL에서 대시보드 정상 동작 확인.",
+      "status": "todo",
+      "doc": "tasks/T16.md",
+      "category": "deploy",
+      "priority": "high",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T15"
+      ]
+    },
+    {
+      "id": "T17",
+      "title": "Gemini 적대적 코드 리뷰 요청",
+      "description": "DB 커넥션 누수 및 Vercel 배포 에러 요소에 대해 Gemini에게 적대적 리뷰 요청.",
+      "status": "todo",
+      "doc": "tasks/T17.md",
+      "category": "review",
+      "priority": "medium",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T16",
+        "T07"
+      ]
+    },
+    {
+      "id": "T18",
+      "title": "리뷰 피드백 반영 및 최종 통합 테스트",
+      "description": "Gemini 리뷰 지적사항 리팩토링 반영 후 전체 시나리오(E2E) 재확인.",
+      "status": "todo",
+      "doc": "tasks/T18.md",
+      "category": "review",
+      "priority": "high",
+      "estimated_minutes": 30,
+      "depends_on": [
+        "T17"
+      ]
+    }
+  ]
+}
