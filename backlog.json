@@ -29,14 +29,15 @@
       "id": "T02",
       "title": "alarm_logs 테이블 생성 및 Mock 데이터 삽입",
       "description": "설계.md의 CREATE TABLE / INSERT 쿼리를 Supabase SQL Editor에서 실행.",
-      "status": "todo",
+      "status": "in_progress",
       "doc": "tasks/T02.md",
       "category": "db",
       "priority": "high",
       "estimated_minutes": 30,
       "depends_on": [
         "T01"
-      ]
+      ],
+      "updated_at": "2026-09-17"
     },
     {
       "id": "T03",
