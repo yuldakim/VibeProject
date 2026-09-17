@@ -17,7 +17,7 @@
       "id": "T01",
       "title": "Supabase 프로젝트 생성 및 접속키 발급",
       "description": "Supabase 계정/프로젝트 생성 후 Project URL, anon/service key 확보.",
-      "status": "in_progress",
+      "status": "done",
       "doc": "tasks/T01.md",
       "category": "setup",
       "priority": "high",
